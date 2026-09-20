@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Павел — мастер и любитель-астроном</title>
+<style>
+  :root{
+    --bg: #0a0d1a;
+    --bg-alt: #10142a;
+    --card: #161b36;
+    --text: #eceffb;
+    --text-muted: #a6adc9;
+    --accent: #f2b544;
+    --accent-dark: #c98f2a;
+    --radius: 18px;
+    --shadow: 0 14px 34px rgba(0,0,0,.45);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img{ display:block; max-width:100%; }
+
+  h1, h2, h3{
+    line-height: 1.15;
+    font-weight: 800;
+    margin: 0 0 .5em;
+  }
+
+  h2{
+    font-size: clamp(1.6rem, 1.1rem + 2vw, 2.3rem);
+    color: var(--text);
+  }
+
+  h2 .accent-dot{ color: var(--accent); }
+
+  p{ margin: 0 0 1em; }
+
+  .container{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section{ padding: 64px 0; }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    background: #05060d;
+    overflow: hidden;
+  }
+
+  .hero img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+
+  .hero::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,6,13,.15) 0%, rgba(5,6,13,.4) 45%, rgba(5,6,13,.94) 100%);
+  }
+
+  .hero-content{
+    position: relative;
+    z-index: 1;
+    padding: 48px 24px 56px;
+    width: 100%;
+  }
+
+  .hero-content .container{ padding: 0 24px; }
+
+  .eyebrow{
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .8rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 1.8rem + 4vw, 4.6rem);
+    color: #fff;
+    text-shadow: 0 4px 18px rgba(0,0,0,.5);
+  }
+
+  .tagline{
+    font-size: clamp(1.05rem, .95rem + .5vw, 1.3rem);
+    color: #dfe3f5;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ---------- ABOUT ---------- */
+
+  .about{ background: var(--bg); }
+
+  .about .lede{
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+
+  .trait-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .trait-list li{
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    border: 1px solid rgba(255,255,255,.05);
+  }
+
+  .trait-list li strong{
+    display: block;
+    color: var(--accent);
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 6px;
+  }
+
+  blockquote{
+    margin: 36px 0;
+    padding: 22px 28px;
+    border-left: 4px solid var(--accent);
+    background: var(--bg-alt);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #dfe3f5;
+  }
+
+  blockquote span{
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: .85rem;
+    color: var(--text-muted);
+  }
+
+  /* ---------- WORK ---------- */
+
+  .work{ background: var(--bg-alt); }
+
+  .card-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+    margin-top: 36px;
+  }
+
+  .card{
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,.05);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card figure{
+    margin: 0;
+    height: 160px;
+    overflow: hidden;
+    background: #05060d;
+  }
+
+  .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-body{
+    padding: 20px 22px 24px;
+  }
+
+  .card h3{
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .card p{
+    color: var(--text-muted);
+    font-size: .96rem;
+    margin: 0;
+  }
+
+  /* ---------- FACTS ---------- */
+
+  .facts{ background: var(--bg); }
+
+  .facts-layout{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 32px;
+  }
+
+  .fact-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .fact-list li{
+    position: relative;
+    padding-left: 26px;
+    color: var(--text);
+  }
+
+  .fact-list li::before{
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+  }
+
+  .fact-figure{
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--card);
+  }
+
+  .fact-figure img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .fact-figure figcaption{
+    padding: 14px 18px 18px;
+    font-size: .88rem;
+    color: var(--text-muted);
+  }
+
+  /* ---------- FINALE ---------- */
+
+  .finale{
+    position: relative;
+    min-height: 56vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .finale img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .finale::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(4,5,10,.55) 0%, rgba(4,5,10,.8) 100%);
+  }
+
+  .finale-content{
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    padding: 0 24px;
+  }
+
+  .finale-content p.quote{
+    font-size: clamp(1.4rem, 1.1rem + 1.5vw, 2rem);
+    font-style: italic;
+    color: #fff;
+    margin: 0 0 12px;
+    text-shadow: 0 4px 18px rgba(0,0,0,.6);
+  }
+
+  .finale-content p.who{
+    color: var(--accent);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: .85rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 720px){
+    section{ padding: 44px 0; }
+    .hero{ min-height: 62vh; }
+    .facts-layout{ grid-template-columns: 1fr; }
+    .fact-figure img{ height: 180px; }
+  }
+
+  /* ---------- STARFIELD ---------- */
+
+  .starfield{
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .star{
+    position: absolute;
+    top: -10px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0;
+    animation-name: star-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes star-fall{
+    0%{ transform: translate(0, 0); opacity: 0; }
+    8%{ opacity: var(--star-opacity, .8); }
+    92%{ opacity: var(--star-opacity, .8); }
+    100%{ transform: translate(var(--drift, 40px), 108vh); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .starfield{ display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="starfield" id="starfield"></div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="container">
+        <span class="eyebrow">33 года • Гродно • Мастер смены</span>
+        <h1>Павел</h1>
+        <p class="tagline">Не уверен, что человек вообще способен трезво оценить свой характер. Поэтому не буду утверждать, какой я — просто расскажу, чем занимаюсь и что люблю, а выводы делайте сами. Днём слежу за порядком на производстве, ночью — за звёздами в телескоп.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="container">
+      <h2>Обо мне<span class="accent-dot">.</span></h2>
+      <p class="lede">Зовут меня <strong>Павел</strong>, мне 33 года, живу в <strong>Гродно</strong>. По профессии — мастер смены: отвечаю за то, чтобы работа шла по плану и без сбоев, и за людей, которые рядом со мной эту работу делают.</p>
+      <p>Немного интроверт — шумным компаниям предпочитаю тишину, своё пространство и занятие по душе: телескоп или 3D-принтер.</p>
+
+      <ul class="trait-list">
+        <li><strong>О себе</strong>33 года, живу в Гродно.</li>
+        <li><strong>Профессия</strong>Мастер смены — дисциплина, порядок и ответственность за смену.</li>
+        <li><strong>Увлечения</strong>Любитель-астроном и 3D-печать.</li>
+        <li><strong>Тип личности</strong>Немного интроверт — тишина мне ближе шумных компаний.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="container">
+      <h2>Чем занимаюсь<span class="accent-dot">.</span></h2>
+      <p>Работа и увлечение у меня разные, но подход к ним один — если взялся, доведи до конца.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-body">
+            <h3>Мастер смены</h3>
+            <p>Слежу за сменой, за качеством и за порядком. Отвечаю за то, чтобы всё было сделано на совесть, а не для галочки. «Мастер смены — должность, где "всё под контролем" означает, что ты просто ещё не нашёл, что сломалось.»</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <figure><img src="images/moon.jpg" alt="Луна, снятая через телескоп"></figure>
+          <div class="card-body">
+            <h3>Астрономия</h3>
+            <p>По ночам — телескоп, небо и терпение. Могу подолгу настраивать фокус ради одного хорошего снимка Луны.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <figure><img src="images/stars.jpg" alt="Звёздное небо над деревьями"></figure>
+          <div class="card-body">
+            <h3>Тишина и своё пространство</h3>
+            <p>Немного интроверт — восстанавливаюсь в одиночестве, под открытым небом, подальше от лишнего шума.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <figure><img src="images/3dprint.jpg" alt="3D-принтер печатает фигурку"></figure>
+          <div class="card-body">
+            <h3>3D-печать</h3>
+            <p>Ещё одно занятие для терпеливых — печатаю детали и модели, разбираюсь, почему принтер опять что-то не то делает, и переделываю, пока не выйдет как надо.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <figure><img src="images/hammock.jpg" alt="Павел лежит в гамаке в саду"></figure>
+          <div class="card-body">
+            <h3>Активный отдых</h3>
+            <p>А иногда лучший отдых — вообще ничего не делать. Гамак в саду, тишина и никаких срочных дел.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <figure><img src="images/building.jpg" alt="Павел кладёт блоки на стройке"></figure>
+          <div class="card-body">
+            <h3>Люблю осваивать новую профессию</h3>
+            <p>Строю сам — от фундамента до кладки стен. Разобраться, как что устроено, и сделать своими руками — отдельное удовольствие.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3>Упорство</h3>
+            <p>Главный рабочий инструмент — не столько руки, сколько упрямство. Если задача кажется нерешаемой, это ненадолго.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="container">
+      <h2>Интересные факты не по теме<span class="accent-dot">.</span></h2>
+      <div class="facts-layout">
+        <ul class="fact-list">
+          <li>Свет от Луны, который вы видите в телескоп, шёл до Земли чуть больше секунды.</li>
+          <li>В ясную безлунную ночь невооружённым глазом видно около 2500–3000 звёзд — и это меньше 0,001% звёзд одной только нашей галактики.</li>
+          <li>Сатурн можно разглядеть вместе с кольцами уже в любительский телескоп от 70 мм апертуры.</li>
+          <li>Млечный Путь — это не абстракция: в тёмном небе его действительно видно как светлую полосу, если знать, куда смотреть.</li>
+          <li>Метеор — это не падающая звезда, а частица размером с песчинку, сгорающая в атмосфере на скорости в десятки км/с.</li>
+        </ul>
+        <figure class="fact-figure">
+          <img src="images/moon.jpg" alt="Луна крупным планом через телескоп">
+          <figcaption>Снято собственным телескопом — одно из моих любимых занятий на досуге.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale">
+    <img src="images/stars.jpg" alt="Звёздное небо">
+    <div class="finale-content">
+      <p class="quote">«Собрать, разобрать, собрать заново — и так, пока не заработает».</p>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var field = document.getElementById('starfield');
+      var count = window.innerWidth < 720 ? 35 : 65;
+      for (var i = 0; i < count; i++){
+        var star = document.createElement('span');
+        star.className = 'star';
+        var size = (Math.random() * 2 + 1).toFixed(1);
+        var duration = (Math.random() * 25 + 20).toFixed(1);
+        var delay = (Math.random() * -45).toFixed(1);
+        var drift = (Math.random() * 80 - 40).toFixed(0);
+        star.style.left = (Math.random() * 100) + 'vw';
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.boxShadow = '0 0 ' + (size * 2) + 'px rgba(255,255,255,.6)';
+        star.style.setProperty('--drift', drift + 'px');
+        star.style.setProperty('--star-opacity', (Math.random() * .5 + .4).toFixed(2));
+        star.style.animationDuration = duration + 's';
+        star.style.animationDelay = delay + 's';
+        field.appendChild(star);
+      }
+    })();
+  </script>
+
+</body>
+</html>
