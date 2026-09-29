@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Павел — мастер и любитель-астроном</title>
+<meta name="description" content="Павел, 33 года, Гродно. Мастер смены на производстве, любитель-астроном, увлекается 3D-печатью.">
 <style>
   :root{
     --bg: #0a0d1a;
@@ -18,8 +19,6 @@
   }
 
   *{ box-sizing: border-box; }
-
-  html{ scroll-behavior: smooth; }
 
   body{
     margin: 0;
@@ -90,13 +89,13 @@
     width: 100%;
   }
 
-  .hero-content .container{ padding: 0 24px; }
+  .hero-content .container{ padding: 0; }
 
   .eyebrow{
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: .12em;
-    font-size: .8rem;
+    font-size: .875rem;
     color: var(--accent);
     font-weight: 700;
     margin-bottom: 14px;
@@ -143,7 +142,7 @@
   .trait-list li strong{
     display: block;
     color: var(--accent);
-    font-size: .82rem;
+    font-size: .875rem;
     text-transform: uppercase;
     letter-spacing: .08em;
     margin-bottom: 6px;
@@ -164,7 +163,7 @@
     display: block;
     margin-top: 8px;
     font-style: normal;
-    font-size: .85rem;
+    font-size: .9rem;
     color: var(--text-muted);
   }
 
@@ -366,7 +365,7 @@
 </head>
 <body>
 
-  <div class="starfield" id="starfield"></div>
+  <div class="starfield" id="starfield" aria-hidden="true"></div>
 
   <header class="hero">
     <div class="hero-content">
@@ -378,6 +377,7 @@
     </div>
   </header>
 
+  <main>
   <section class="about">
     <div class="container">
       <h2>Обо мне<span class="accent-dot">.</span></h2>
@@ -407,7 +407,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/moon.jpg" alt="Луна, снятая через телескоп"></figure>
+          <figure><img src="images/moon.jpg" alt="Луна, снятая через телескоп" loading="lazy"></figure>
           <div class="card-body">
             <h3>Астрономия</h3>
             <p>По ночам — телескоп, небо и терпение. Могу подолгу настраивать фокус ради одного хорошего снимка Луны.</p>
@@ -415,7 +415,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/stars.jpg" alt="Звёздное небо над деревьями"></figure>
+          <figure><img src="images/stars.jpg" alt="Звёздное небо над деревьями" loading="lazy"></figure>
           <div class="card-body">
             <h3>Тишина и своё пространство</h3>
             <p>Немного интроверт — восстанавливаюсь в одиночестве, под открытым небом, подальше от лишнего шума.</p>
@@ -423,7 +423,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/3dprint.jpg" alt="3D-принтер печатает фигурку"></figure>
+          <figure><img src="images/3dprint.jpg" alt="3D-принтер печатает фигурку" loading="lazy"></figure>
           <div class="card-body">
             <h3>3D-моделирование и печать</h3>
             <p>Ещё одно занятие для терпеливых — проектирую модели, печатаю на принтере, разбираюсь, почему опять что-то не то, и переделываю, пока не выйдет как надо.</p>
@@ -431,7 +431,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/hammock.jpg" alt="Павел лежит в гамаке в саду"></figure>
+          <figure><img src="images/hammock.jpg" alt="Павел лежит в гамаке в саду" loading="lazy"></figure>
           <div class="card-body">
             <h3>Активный отдых</h3>
             <p>А иногда лучший отдых — вообще ничего не делать. Гамак в саду, тишина и никаких срочных дел.</p>
@@ -439,7 +439,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/building.jpg" alt="Павел кладёт блоки на стройке"></figure>
+          <figure><img src="images/building.jpg" alt="Павел кладёт блоки на стройке" loading="lazy"></figure>
           <div class="card-body">
             <h3>Люблю осваивать новую профессию</h3>
             <p>Строю сам — от фундамента до кладки стен. Разобраться, как что устроено, и сделать своими руками — отдельное удовольствие.</p>
@@ -468,7 +468,7 @@
           <li>Метеор — это не падающая звезда, а частица размером с песчинку, сгорающая в атмосфере на скорости в десятки км/с.</li>
         </ul>
         <figure class="fact-figure">
-          <img src="images/moon.jpg" alt="Луна крупным планом через телескоп">
+          <img src="images/moon.jpg" alt="Луна крупным планом через телескоп" loading="lazy">
           <figcaption>Снято собственным телескопом — одно из моих любимых занятий на досуге.</figcaption>
         </figure>
       </div>
@@ -476,11 +476,12 @@
   </section>
 
   <section class="finale">
-    <img src="images/stars.jpg" alt="Звёздное небо">
+    <img src="images/stars.jpg" alt="" loading="lazy">
     <div class="finale-content">
       <p class="quote">«Собрать, разобрать, собрать заново — и так, пока не заработает».</p>
     </div>
   </section>
+  </main>
 
   <script>
     (function(){
