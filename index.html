@@ -58,6 +58,8 @@
 
   section{ padding: 64px 0; }
 
+  section .container > p{ max-width: 68ch; }
+
   /* ---------- HERO ---------- */
 
   .hero{
@@ -99,7 +101,7 @@
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: .12em;
-    font-size: .875rem;
+    font-size: .95rem;
     color: var(--accent);
     font-weight: 700;
     margin-bottom: 14px;
@@ -127,31 +129,6 @@
     color: var(--text);
   }
 
-  .trait-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin: 32px 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .trait-list li{
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    border: 1px solid rgba(255,255,255,.05);
-  }
-
-  .trait-list li strong{
-    display: block;
-    color: var(--accent);
-    font-size: .875rem;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    margin-bottom: 6px;
-  }
-
   blockquote{
     margin: 36px 0;
     padding: 22px 28px;
@@ -167,7 +144,7 @@
     display: block;
     margin-top: 8px;
     font-style: normal;
-    font-size: .9rem;
+    font-size: 1rem;
     color: var(--text-muted);
   }
 
@@ -216,7 +193,7 @@
 
   .card p{
     color: var(--text-muted);
-    font-size: .96rem;
+    font-size: 1rem;
     margin: 0;
   }
 
@@ -270,7 +247,7 @@
 
   .fact-figure figcaption{
     padding: 14px 18px 18px;
-    font-size: .88rem;
+    font-size: .95rem;
     color: var(--text-muted);
   }
 
@@ -320,7 +297,7 @@
     color: var(--accent);
     letter-spacing: .06em;
     text-transform: uppercase;
-    font-size: .85rem;
+    font-size: .95rem;
     font-weight: 700;
     margin: 0;
   }
@@ -333,43 +310,9 @@
     .facts-layout{ grid-template-columns: 1fr; }
     .fact-figure img{ height: 180px; }
   }
-
-  /* ---------- STARFIELD ---------- */
-
-  .starfield{
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 999;
-  }
-
-  .star{
-    position: absolute;
-    top: -10px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0;
-    animation-name: star-fall;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes star-fall{
-    0%{ transform: translate(0, 0); opacity: 0; }
-    8%{ opacity: var(--star-opacity, .8); }
-    92%{ opacity: var(--star-opacity, .8); }
-    100%{ transform: translate(var(--drift, 40px), 108vh); opacity: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .starfield{ display: none; }
-  }
 </style>
 </head>
 <body>
-
-  <div class="starfield" id="starfield" aria-hidden="true"></div>
 
   <header class="hero">
     <div class="hero-content">
@@ -385,15 +328,8 @@
   <section class="about">
     <div class="container">
       <h2>Обо мне<span class="accent-dot">.</span></h2>
-      <p class="lede">Зовут меня <strong>Павел</strong>, мне 33 года, живу в <strong>Гродно</strong>. По профессии — мастер смены: отвечаю за то, чтобы работа шла по плану и без сбоев, и за людей, которые рядом со мной эту работу делают.</p>
+      <p class="lede">Зовут меня <strong>Павел</strong>. По профессии — мастер смены: отвечаю за то, чтобы работа шла по плану и без сбоев, и за людей, которые рядом со мной эту работу делают.</p>
       <p>Немного интроверт — шумным компаниям предпочитаю тишину, своё пространство и занятие по душе: телескоп или 3D-принтер.</p>
-
-      <ul class="trait-list">
-        <li><strong>О себе</strong>33 года, живу в Гродно.</li>
-        <li><strong>Профессия</strong>Мастер смены — дисциплина, порядок и ответственность за смену.</li>
-        <li><strong>Увлечения</strong>Любитель-астроном, 3D-моделирование и печать.</li>
-        <li><strong>Тип личности</strong>Немного интроверт — тишина мне ближе шумных компаний.</li>
-      </ul>
     </div>
   </section>
 
@@ -411,7 +347,7 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/moon.jpg" alt="Луна, снятая через телескоп" width="577" height="1280" loading="lazy"></figure>
+          <figure><img src="images/moon.jpg" alt="Луна, снятая через телескоп" width="577" height="330" loading="lazy"></figure>
           <div class="card-body">
             <h3>Астрономия</h3>
             <p>По ночам — телескоп, небо и терпение. Могу подолгу настраивать фокус ради одного хорошего снимка Луны.</p>
@@ -419,10 +355,10 @@
         </div>
 
         <div class="card">
-          <figure><img src="images/stars.jpg" alt="Звёздное небо над деревьями" width="577" height="1280" loading="lazy"></figure>
+          <figure><img src="images/stars.jpg" alt="Звёздное небо над деревьями" width="577" height="400" loading="lazy"></figure>
           <div class="card-body">
             <h3>Тишина и своё пространство</h3>
-            <p>Немного интроверт — восстанавливаюсь в одиночестве, под открытым небом, подальше от лишнего шума.</p>
+            <p>Восстанавливаюсь в одиночестве, под открытым небом, подальше от лишнего шума.</p>
           </div>
         </div>
 
@@ -472,7 +408,7 @@
           <li>Метеор — это не падающая звезда, а частица размером с песчинку, сгорающая в атмосфере на скорости в десятки км/с.</li>
         </ul>
         <figure class="fact-figure">
-          <img src="images/moon.jpg" alt="Луна крупным планом через телескоп" width="577" height="1280" loading="lazy">
+          <img src="images/moon.jpg" alt="Луна крупным планом через телескоп" width="577" height="330" loading="lazy">
           <figcaption>Снято собственным телескопом — одно из моих любимых занятий на досуге.</figcaption>
         </figure>
       </div>
@@ -480,37 +416,11 @@
   </section>
 
   <section class="finale">
-    <img src="images/stars.jpg" alt="" width="577" height="1280" loading="lazy">
+    <img src="images/stars.jpg" alt="" width="577" height="400" loading="lazy">
     <div class="finale-content">
       <p class="quote">«Собрать, разобрать, собрать заново — и так, пока не заработает».</p>
     </div>
   </section>
   </main>
-
-  <script>
-    (function(){
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var field = document.getElementById('starfield');
-      var count = window.innerWidth < 720 ? 35 : 65;
-      for (var i = 0; i < count; i++){
-        var star = document.createElement('span');
-        star.className = 'star';
-        var size = (Math.random() * 2 + 1).toFixed(1);
-        var duration = (Math.random() * 25 + 20).toFixed(1);
-        var delay = (Math.random() * -45).toFixed(1);
-        var drift = (Math.random() * 80 - 40).toFixed(0);
-        star.style.left = (Math.random() * 100) + 'vw';
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.boxShadow = '0 0 ' + (size * 2) + 'px rgba(255,255,255,.6)';
-        star.style.setProperty('--drift', drift + 'px');
-        star.style.setProperty('--star-opacity', (Math.random() * .5 + .4).toFixed(2));
-        star.style.animationDuration = duration + 's';
-        star.style.animationDelay = delay + 's';
-        field.appendChild(star);
-      }
-    })();
-  </script>
-
 </body>
 </html>
